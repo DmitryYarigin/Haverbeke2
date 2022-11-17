@@ -20,7 +20,42 @@
 
 // prompt("Введите пароль")
 
-console.log(Math.min(2,4) + 100);
 
-let theNumber = Number(prompt("введите число"));
-console.log("это число является квадратным корнем из " + theNumber * theNumber);
+// let theNumber = Number(prompt("введите число"));
+
+// if(!Number.isNaN(theNumber)) {
+//     console.log("это число является квадратным корнем из " + theNumber * theNumber);
+//     console.log(theNumber);
+// } else {   
+//     console.log("почему не ввели число");
+// }
+
+// let num = Number(prompt("введите число"));
+
+// if (num < 10) {
+//     console.log("маленькое число");
+// } else if (num < 100) {
+//     console.log("среднее число");
+// } else {
+//     console.log("большое число");
+// }
+
+// let result = 1;
+// let counter = 0;
+
+// do {
+//     result *= 2;
+//     counter += 1;
+//     console.log(result);
+//     console.log(`прогнали ${counter} раза`);
+
+// } while (counter < 0);
+
+let yourName;
+
+do {
+    yourName = prompt("Кто вы?");
+
+} while (!yourName);
+
+console.log(yourName);
