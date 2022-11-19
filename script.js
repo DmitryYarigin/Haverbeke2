@@ -51,11 +51,114 @@
 
 // } while (counter < 0);
 
-let yourName;
+// let yourName;
 
-do {
-    yourName = prompt("Кто вы?");
+// do {
+//     yourName = prompt("Кто вы?");
 
-} while (!yourName);
+// } while (!yourName);
 
-console.log(yourName);
+// console.log(yourName);
+
+// let result = 1;
+
+// for (let counter = 0; counter < 10; counter++) {
+//     result *= 2
+//     console.log(result);
+// }
+
+// for (let current = 20; ; current = current + 1) {
+//     if (current % 7 == 0) {
+//         console.log(current);
+//         break
+//     }
+    
+// }
+
+// switch (prompt("какая сейчас погода?")) {
+//     case "дождь": 
+//     console.log("возьмите зонт");
+//     break;
+//     default: 
+//     console.log("полгода плохая погода");
+// }
+
+// задача 1
+
+// let counter = "#";
+// let container = "#";
+
+// for (let i = 0; i < 7; i++) {
+//     console.log(container);
+//     container += counter;
+// }
+
+// // вот как решил автор
+
+// for (let line = "#"; line.length < 8; line += "#"){
+//     console.log(line);
+// }
+
+// задача 2
+
+
+// for (let i = 1; i <= 100; i++) {
+//     if (i % 3 == 0) {
+//         console.log("Fizz");
+//     } if (i % 5 == 0) {
+//         console.log("Buzz");
+//     } if ((i % 3 == 0) && (i % 5 == 0)) {
+//         console.log("FizzBuzz");
+//     } else {
+//         console.log(i);
+//     }
+// }
+
+
+// как автор решил
+
+// for (let n = 1; n <= 100; n++) {
+//     output = "";
+//     if (n % 3 == 0) output = "Fizz";
+//     if (n % 5 == 0) output = "Buzz";
+//     if ((n % 3 == 0) && (n % 5 == 0)) output = "FizzBuzz";
+
+//     console.log(output || n);
+// }
+
+// задача 3
+
+// let var1 = "# ";
+// let var2 = " #";
+// let var3 = "";
+// let var4 = "";
+
+// for (let ib = 0; ib < 8; ib++) {
+//     for (let i = 0; i < 8; i++) {
+//         var3 += var1;
+//     }
+//     console.log(var3);
+//     var = '';
+//     for (let i = 0; i < 8; i++) {
+//         var4 += var2;
+//     }
+//     console.log(var4);
+// }
+
+let size = 8;
+
+let boart = ""
+
+for (let x = 0; x < size; x++) {
+    for (let y = 0; y < size; y++) {
+        if ((x + y) % 2 == 0) {
+            boart += " "
+        } else {
+            boart += "#"
+        }
+    }
+    boart += "\n"
+}
+console.log(boart);
+
+// страница 59
