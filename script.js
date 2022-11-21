@@ -160,5 +160,3 @@ for (let x = 0; x < size; x++) {
     boart += "\n"
 }
 console.log(boart);
-
-// страница 59
