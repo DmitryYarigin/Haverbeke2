@@ -103,14 +103,20 @@
 
 // ======================= РЕКУРСИЯ ========================
 
-function power (base, exponent) {
-    if (exponent == 0) {
-        return 1;
-    } else {
-        console.log(power(base, exponent - 1))
-        return base * power(base, exponent - 1);}
-}
+// function power (base, exponent) {
+//     if (exponent == 0) {
+//         return 1;
+//     } else {
+//         return base * power(base, exponent - 1);}
+// }
 
-console.log(power(2, 2));
+// console.log(power(2, 3));
 
 // страница 70
+
+// используем условный оператор ?
+// function pow(x, n) {
+//     return (n == 1) ? x : (x * pow(x, n - 1));
+// }
+
+// console.log(pow(3, 3));
