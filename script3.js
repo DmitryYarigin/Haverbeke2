@@ -112,11 +112,70 @@
 
 // console.log(power(2, 3));
 
-// страница 70
 
 // используем условный оператор ?
+
 // function pow(x, n) {
 //     return (n == 1) ? x : (x * pow(x, n - 1));
 // }
 
 // console.log(pow(3, 3));
+
+// страница 70
+
+// это я сам написал по памяти
+
+// function power (x, n) {
+//     if(n == 1) {
+//         return x;
+//     } else {
+//        return x * power(x, n - 1);
+//     }
+// }
+
+// console.log(power(2, 3));
+
+// пример рекурсии из учебника
+
+function findSolution(target) { 
+
+    function find(current, history) { 
+        if (current == target) { 
+            return history; 
+        } 
+        else if (current > target) { 
+            return null; 
+        } else { 
+            return find(current + 5, `(${history} + 5)`) || 
+                    find(current * 3, `(${history} * З)`); 
+        } 
+    }
+    return find(1, "1");
+}
+
+console.log(findSolution(24));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
