@@ -227,23 +227,40 @@
 
 // 2) создаем функцию рекурсивную
 
-function isEven (x) {
-    // if (x < 0) {
-    //     x = x * (-1);
-    //     console.log(x); это было мое решение с отрицательным числом
-    // };
-    if( x == 1) return false;
-    else if ( x == 0) return true;
-    else if (x < 0) return isEven(-x); // а это автора
-    else {
-            return isEven(x - 2);
-    }
-}
+// function isEven (x) {
+//     // if (x < 0) {
+//     //     x = x * (-1);
+//     //     console.log(x); это было мое решение с отрицательным числом
+//     // };
+//     if( x == 1) return false;
+//     else if ( x == 0) return true;
+//     else if (x < 0) return isEven(-x); // а это автора
+//     else {
+//             return isEven(x - 2);
+//     }
+// }
 
+// console.log(isEven( -6));
 
-console.log(isEven( -6));
+// 3) создаем функцию countBs
 
-// стр 77
+// function countChar (str, letter) {
+//     let count = 0;
+//     let splitStr = str.split("");
+//     for (let i = 0; i < splitStr.length; i++) {
+//         if (splitStr[i] == letter) {
+//             count++;
+//         }    
+//     }
+//     return count
+// }
+
+// function countBs(str) {
+//     return countChar(str, "e")
+// }
+
+// console.log(countBs("testBBBB"));
+
 
 
 
