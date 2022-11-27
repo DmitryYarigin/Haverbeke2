@@ -137,36 +137,113 @@
 
 // пример рекурсии из учебника
 
-function findSolution(target) { 
+// function findSolution(target) { 
 
-    function find(current, history) { 
-        if (current == target) { 
-            return history; 
-        } 
-        else if (current > target) { 
-            return null; 
-        } else { 
-            return find(current + 5, `(${history} + 5)`) || 
-                    find(current * 3, `(${history} * З)`); 
-        } 
+//     function find(current, history) { 
+//         if (current == target) { 
+//             return history; 
+//         } 
+//         else if (current > target) { 
+//             return null; 
+//         } else { 
+//             console.log(history);
+//             return find(current + 5, `(${history} + 5)`) || 
+//                     find(current * 3, `(${history} * З)`); 
+//         } 
+//     }
+//     return find(1, "1");
+// }
+
+// console.log(findSolution(21));
+
+// function faindSolution(target) {
+//     function found(current, history) {
+//         if(current == target) {
+//             return history;
+//         } else if (current > target) {
+//             return null
+//         } else {
+//             console.log(history);
+//             return found(current + 5, `(${history} + 5)`) ||
+//                    found(current * 3, `(${history} * 3)`);
+//         }   
+//     }
+//     return found(1, "1");
+// }
+
+// console.log(faindSolution(32));
+
+
+// ======== примеры функций: выполняющ. побочный эффект =======
+
+// function printZeroPadderWithLabel(number, label) {
+//     let numberString = String(number);
+//     console.log(numberString);
+//     while (numberString.length < 3) {
+//         numberString = "0" + numberString;
+//     }
+//     console.log(`${numberString} ${label}`);
+// }
+
+// function printFarmInventory(cows, chiken, pigs) {
+//     printZeroPadderWithLabel(cows, "коров");
+//     printZeroPadderWithLabel(chiken, "цыплят");
+//     printZeroPadderWithLabel(pigs, "свиней");
+// }
+
+// printFarmInventory(7, 5, 11);
+
+// ======== примеры функций: возвращаящая значение =======
+
+// function zeroPad(number, width) {
+//     let string = String(number);
+//     while (string.length < width) {
+//         string = "0" + string;
+//     }
+//     return string;
+// }
+
+// function printFarmInventory(cows, chiken, pigs) {
+//     console.log(`${zeroPad(cows, 3)} коров`);
+//     console.log(`${zeroPad(chiken, 3)} цыплят`);
+//     console.log(`${zeroPad(pigs, 3)} свиней`);
+// }
+
+// printFarmInventory(11, 7, 5);
+
+// ================== УПРАЖНЕНИЯ ==================
+
+// 1) создаем функцию
+
+// function minNumber(a, b) {
+//     if (a > b) return b;
+//     else if ( a == b) return "числа равны";
+//     else { 
+//         return a
+//     };
+// }
+
+// console.log(minNumber (-5, -6));
+
+// 2) создаем функцию рекурсивную
+
+function isEven (x) {
+    // if (x < 0) {
+    //     x = x * (-1);
+    //     console.log(x); это было мое решение с отрицательным числом
+    // };
+    if( x == 1) return false;
+    else if ( x == 0) return true;
+    else if (x < 0) return isEven(-x); // а это автора
+    else {
+            return isEven(x - 2);
     }
-    return find(1, "1");
 }
 
-console.log(findSolution(24));
 
+console.log(isEven( -6));
 
-
-
-
-
-
-
-
-
-
-
-
+// стр 77
 
 
 
