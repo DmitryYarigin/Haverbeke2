@@ -215,6 +215,8 @@ function journalEvents(journal) {
 
 //  ======================== КОНЕЦ =======================
 
+
+// ======= методы массивов и строк ==============
 let todoList = [];
 
 function remember(task) { // добавляет задачу в конец списка
@@ -232,14 +234,123 @@ function rememberUrgently(task) { // добаваляет елемент в на
 remember("купить продукты");
 remember("купить инструменты");
 
-console.log(todoList);
+// console.log(todoList);
 
-getTask();
+// getTask();
 
-console.log(todoList);
+// console.log(todoList);
 
-rememberUrgently("сходить на работу");
+// rememberUrgently("сходить на работу");
 
-console.log(todoList);
+// console.log(todoList);
 
-// 95
+// console.log([1, 2, 6, 7, 4, 2].indexOf(2)); // возв. индекс по кот. было найдено заданное значение или -1 если оно не было найдено
+
+// console.log([1, 2, 6, 7, 4, 2].lastIndexOf(2));
+
+// console.log([1, 2, 6, 7, 4, 2].slice(2,4)); // принимает начальный и конечный индексы и возвращает массив содерж. только эти элементы
+
+// console.log([1, 2, 6, 7, 4, 2].slice(2));
+
+function remove(array, index) {
+    return array.slice(0, index).concat(array.slice(index + 1))
+}
+
+// console.log(remove(["a", "b", "c", "d", "e"],2));
+
+// console.log("кокосы".slice(3));
+// console.log("кокосы".indexOf("с"));
+
+// console.log("один два три".indexOf("ри"));
+
+// console.log(" окей \n ".trim()); // уберет пробелы
+
+// console.log(String(6).padStart(3, "0")); // добавил элементы
+
+// let sentence = "Птицы-секретари умеют громко топать";
+// let words = sentence.split(" ");
+// console.log(words);
+// console.log(words.join('.')); // join соединяет елементы в строку указанным элементом
+
+// console.log("ЛА".repeat(3)); // repeat повторяет строку несколько раз
+
+// let string = "abc";
+// console.log(string.length);
+// console.log(string[1]); // string можно использовать и для строк
+
+// ==== дополн. параметры ========
+
+function max (...numbers) { // функция принимает любое количество аргументов
+    let result = -Infinity;
+    for (let number of numbers) {
+        if (number > result) result = number;
+    }
+    return result;
+}
+
+// let numbers = [2, 4, 6, 8]; // а тут три точки позволяют использовать массив в кач. аргумента функции
+// console.log(max(1, ...numbers, 9));
+
+// // еще позволяет развернуть массив в массиве
+
+// let word = ["никогда", "не пойму"]
+// console.log(["я", ...word, "этого"]);
+
+// ======== Math ===========
+
+// function randomPointOnCircle(radius){
+//     let angle = Math.random() * 2 * Math.PI;
+//     return {x: radius * Math.cos(angle),
+//             y: radius * Math.sin(angle)
+//     };
+// }
+
+// console.log(randomPointOnCircle(2));
+
+// console.log(Math.sin(1));
+// console.log(Math.cos(1));
+// console.log(Math.random()); 
+
+// console.log(Math.floor(Math.random() * 10));
+
+// console.log(Math.ceil(2.34));
+// console.log(Math.round(2.34));
+// console.log(Math.abs(-2.34));
+
+// ============== деструктурирование ==============
+
+// function myFun([a1, a2, a3, a4]) { // переменные массива обозначаются для краткости, вместо arr[0]. просто цифры выдают ошибку
+//     return a1 + a2 + a3 + a4;
+// };
+
+// console.log(myFun([2, 5, 5, 6]));
+// ;
+
+// // работает и для объектов
+
+// let {namea, age} = {namea: "Фараджи", age: 23};// также заглядываем внутрь этого значения
+// console.log(age);
+
+
+// =========== JSON ===========
+
+let string = JSON.stringify({squirrel: false,
+                             events: ["выходной"]});
+// console.log(string);
+console.log(JSON.parse(string).events);
+
+// ============== УПРАЖНЕНИЯ ==============
+
+// 1)
+
+function range (start, end) {
+    let arr = [];
+    for (let i = start; i <= end; i++) {
+        arr.push(i);
+    }
+    return arr
+}
+
+console.log(range(3,6));
+
+// страница 104, занимался 2 часа 03.12.2022
