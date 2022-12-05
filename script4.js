@@ -334,23 +334,141 @@ function max (...numbers) { // функция принимает любое ко
 
 // =========== JSON ===========
 
-let string = JSON.stringify({squirrel: false,
-                             events: ["выходной"]});
-// console.log(string);
-console.log(JSON.parse(string).events);
+// let string = JSON.stringify({squirrel: false,
+//                              events: ["выходной"]});
+// // console.log(string);
+// console.log(JSON.parse(string).events);
 
 // ============== УПРАЖНЕНИЯ ==============
 
 // 1)
 
-function range (start, end) {
+function range (start, end, mult = 1) {
     let arr = [];
-    for (let i = start; i <= end; i++) {
-        arr.push(i);
-    }
+    if (mult < 0) {
+        console.log(mult);
+        for (let i = start; i >= end; i+=mult) {
+            arr.push(i);
+        }    
+    } else {
+        for (let i = start; i <= end; i+=mult) {
+            arr.push(i);
+        }
+    }   
     return arr
 }
 
-console.log(range(3,6));
+function sum(array) {
+    let result = 0;
+    for (const iterator of array) {
+        result += iterator
+    }
+    return result
+}
 
-// страница 104, занимался 2 часа 03.12.2022
+// console.log(range(5, 2, -1));
+
+// console.log(sum(range(2, 5, 1)));
+
+// 2)
+
+// function reverseArray (array) { это так метод просто
+//     return array.reverse();
+// }
+
+let myArr = [1, 2, 3, 4, 5, ];
+
+// console.log(reverseArray(myArr));
+// console.log(myArr);
+
+// function revereArray(array) {
+//     let newArr = [];
+//     for (const iterator of array) {
+//         newArr.unshift(iterator); добавили в начало массива
+//     };
+//     // unshift
+//     return newArr;
+// };
+
+// вот автор как сделал
+
+function reverseArray(array) {
+    let newArr = [];
+    for (let i = array.length - 1; i >= 0; i--) {
+        newArr.push(array[i]);
+    }
+    return newArr;
+}
+
+// console.log(reverseArray(myArr));
+// console.log(myArr);
+
+// function revereArrayInPlace(array) { // сортировка какая-то типа пузырька
+//     for (let i = 0; i < Math.floor(array.length / 2); i++){
+//         let old = array[i]; // сохраняем в переменной значение элемента
+//         array[i] = array[array.length - 1 - i]; // меняем элемента на противоположный с конца
+//         array[array.length - 1 - i] = old; // а сонца меняем на начальный элемент
+//         console.log(array[i]);
+//     }
+//     return array;
+// }
+
+
+// function revereArrayInPlace(array) { // это я написал по памяти
+//     for (let i = 0; i < Math.floor(array.length / 2); i++) {
+//         let old = array[i];
+//         array[i] = array[array.length - 1 - i];
+//         array[array.length - 1 - i] = old; 
+//         console.log(array[i]);
+//     }
+//     return array
+// }
+
+// console.log(revereArrayInPlace(myArr));
+
+// 3)
+
+function arrayToList (array) {
+    let list = null;
+    for (let i = array.length -1; i >= 0; i--) {
+        list = {value: array[i], rest: list};        
+    }
+    return list;
+}
+
+console.log(arrayToList([1,2,3]));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
