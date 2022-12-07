@@ -428,24 +428,91 @@ function reverseArray(array) {
 
 // 3)
 
-function arrayToList (array) {
-    let list = null;
-    for (let i = array.length -1; i >= 0; i--) {
-        list = {value: array[i], rest: list};        
-    }
-    return list;
+// function arrayToList (array) { // преобразование массива в список
+//     let list = null;
+//     for (let i = array.length -1; i >= 0; i--) {
+//         list = {value: array[i], rest: list};
+//         // console.log(list);   
+//     }
+//     return list;
+// }
+
+// arrayToList([1, 2, 3]);
+
+// function listToArray(list) { // преобразование списка в массив
+//     let array = [];
+//     for (let node = list; node; node = node.rest) {
+//         array.push(node.value);
+//         // console.log(list);
+//         // console.log(node.rest);
+//     }
+//     return array;
+// }
+
+// listToArray(arrayToList([1, 2, 3]));
+
+// function prepend(value, list) {
+//     return {value, rest: list};
+// }
+
+// let myList = {
+//     obana: 3,
+//     val: 5
+// }
+
+// // console.log(prepend(10, myList));
+
+// function nth(list, n) {  // рекурсивная функция возвращ. элемент наход. в заданной позиции
+//     if (!list) return undefined;
+//     else if (n == 0) return list.value;
+//     else { 
+//         return nth(list.rest, n - 1);
+//     }
+// }
+
+// console.log(nth(arrayToList([10, 20, 30]), 1));
+
+// 4) глубокое сравнение
+
+let object1 = {
+    cat: "Маркиз",
+    dog: "Тошка"
 }
 
-console.log(arrayToList([1,2,3]));
+
+let object2 = {
+    cat: "Маркиз",
+    dog: "Тошка"
+}
+
+// console.log(object1.cat);
+
+// function deepEquals(a, b) { // я пытался написать
+//     if (typeof a == Object ) {
+//         console.log("test");
+//         for (const i of a) {
+//             console.log(a.value);
+//             if(a[value] === b[value]) return true;
+//             else return false;
+//         }
+//     }
+//     if (a === b) return true;
+//     else return false;
+// }
+
+console.log(deepEquals(object1, object2));
+// console.log(deepEquals(1, 2));
 
 
+console.log(Object.getOwnPropertyNames(object1));
 
+// нашел в интернете
 
+function deepEquals(a, b) {
+    const props1 = Object.getOwnPropertyNames(a);
+    const props2 = Object.getOwnPropertyNames(b);
 
-
-
-
-
+}
 
 
 
