@@ -500,42 +500,75 @@ let object2 = {
 //     else return false;
 // }
 
-console.log(deepEquals(object1, object2));
-// console.log(deepEquals(1, 2));
+// console.log(deepEquals(object1, object2));
+// // console.log(deepEquals(1, 2));
 
 
-console.log(Object.getOwnPropertyNames(object1));
+// console.log(Object.getOwnPropertyNames(object1));
 
-// нашел в интернете
+// решение автора
 
-function deepEquals(a, b) {
-    const props1 = Object.getOwnPropertyNames(a);
-    const props2 = Object.getOwnPropertyNames(b);
+// function deepEqual(a, b) {
+//     if (a === b) return true; // if просто элементы сравниваем
 
+//     if( a == null || typeof a != "object" || // далее проверяем если а или б ничего не содержит
+//         b == null || typeof b != "object") return false; // или не объект typeof тогда false
+
+//     let keysA = Object.keys(a), keysB = Object.keys(b); // далее объявляем переменные Object.keys
+//                                                         // чтоб вывести массив ключей объектов
+
+//     if(keysA.length != keysB.length) return false; // далее проверяем длинну через переменные наших объектов
+
+//     for (let key of keysA) { // далее для элементов переменной первой-массива в цикле проверяем одинаковые ли элементы
+//         if (!keysB.includes(key) || !deepEqual(a[key], b[key])) { // если не! вторая переменная содержит элемент первой переменной
+//             return false; // возвращаем false
+//         }
+//     }
+//     return true; // в конце функции возвращаем true
+// }
+
+let obj = {here: {is: "an"}, object: 2};
+
+// console.log(deepEqual(obj, obj));
+console.log(deepEqual("оп", "опв"));
+console.log(deepEqual(obj, {here: 1, object: 2}));
+// console.log(Object.keys(obj));
+
+
+//1 if просто элементы сравниваем
+
+//2 далее проверяем если а или б ничего не содержит или не объект typeof тогда false
+
+//3 далее объявляем переменные Object.keys чтоб вывести массив ключей объектов
+
+//4далее для элементов переменной первой-массива в цикле проверяем одинаковые ли элементы
+
+//5 если не! вторая переменная содержит элемент первой переменной
+//6 или не! функция с элементами параметров функции выдала false
+
+//7 возвращаем false
+
+//8 в конце возвращаем true;
+
+function deepEqual (a, b) { // написал по памяти
+    if(a === b) return true;
+
+    if(a == null || typeof(a) != "object" || typeof(b) != "object"
+       || b == null) return false;
+    
+    let keysA = Object.keys(a), keysB = Object.keys(b);
+
+    if(keysA.length != keysB.length) return false;
+
+    for (let key of keysA) {
+        if(!keysB.includes(key) || !deepEqual(a[key], b[key])) return false
+    }
+
+    return true;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+console.log(deepEqual(obj, obj));
+console.log(deepEqual("оп", "опв"));
+console.log(deepEqual(obj, {here: {is: "an"}, object: 2}));
+console.log(typeof "hg");
 
