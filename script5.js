@@ -60,7 +60,7 @@ function repeat (n, action) {
 
 let arrFor = [3, 6, "f", 8, 123];
 
-arrFor.forEach( l => console.log(l));
+// arrFor.forEach( l => console.log(l));
 
 // функция оставляет языки кот. еще существуют
 
@@ -106,16 +106,137 @@ function addNums (a, b) {
 
 // console.log([1, 2, 3, 4].reduce((a,b) => a + b));
 
-function characterCount(script) {
+function characterCount(script) { // выводит одним числом диапазан шрифтов
     return script.ranges.reduce((count,[from, to]) => {
-        return count + (to - from)
+        return count + (to - from);
     }, 0);
 }
 
 console.log(characterCount(SCRIPTS[0]));
 
-console.log(SCRIPTS.reduce((a, b) => {
-    return characterCount(a) < characterCount(b) ? b : a;
-}));
 
-// 115
+// console.log(SCRIPTS.reduce((a, b) => { // находит самый большой шрифт
+//     return characterCount(a) < characterCount(b) ? b : a;
+// }));
+
+// аналогичная предыдущей функция без  метода reduce
+
+// let biggest = null;
+// for (const script of SCRIPTS) {
+//     if (biggest == null || characterCount(biggest) < characterCount(script)) {
+//         biggest = script;
+//     }
+// }
+
+// console.log(biggest);
+
+// ======
+
+
+// пример
+
+// var obj = {'France': 'Paris', 'Englang': 'London'};
+// for (let country of Object.keys(obj)) {
+//     var capital = obj[country];
+//     console.log(country, capital);
+// }
+
+function average(array) {
+    return array.reduce((a, b) => a + b) / array.length;
+}
+
+console.log(Math.round(average(
+    SCRIPTS.filter(s => s.living).map(s => s.year)
+)));
+
+// console.log(SCRIPTS.map(s => s.year));
+
+console.log(Math.round(average(
+    SCRIPTS.filter(s => !s.living).map(s => s.year)
+)));
+
+// это вычисление можно представить в виде цикла
+
+// let total = 0, count = 0;
+// for (let script of SCRIPTS) {
+//     if (script.living) {
+//         total += script.year;
+//         count += 1;
+//     }
+// }
+
+// console.log(Math.round(total / count));
+
+function characterScript(code) {
+    for (const script of SCRIPTS) {
+        if (script.ranges.some(([from, to]) => {
+            return code >= from && code < to;
+        })) {
+            return script;
+        }
+    }
+    return null;
+}
+
+// console.log(characterScript(121));
+
+// let horseShoe = "🐴👟";
+// console.log(horseShoe.length);
+// console.log(horseShoe[0]);
+// console.log(horseShoe.charCodeAt(0));
+// console.log(horseShoe.codePointAt(0));
+
+// 119
+
+let roseDragon = "🌹🐉";
+console.log(roseDragon);
+for (const char of roseDragon) {
+    console.log(char);
+}
+
+function countBy(items, groupName) {
+    let counts = [];
+    for (const item of items) {
+        let name = groupName(item);
+        console.log(name);
+        let known = counts.findIndex(c => c.name == name);
+        console.log(counts.findIndex(c => c.name == name));
+        if(known == -1) {
+            counts.push({name, count: 1})
+        } else {
+            counts[known].count++;
+        }
+    }
+    return counts;
+}
+
+console.log(countBy([1, 2, 3], n => n > 2));
+
+// 
+
+// let users = [
+//     {id: 1, name: "Vasya"},
+//     {id: 2, name: "Petya"},
+//     {id: 3, name: "Masha"}
+// ]
+
+// console.log(users.findIndex(item => item.id == 3));
+
+function textScripts(text) {
+    let scripts = countBy(text, char => {
+        let script = characterScript(char.codePointAt(0));
+        return script ? script.name : "none";
+    }).filter(({name}) => name != "none");
+    console.log(scripts);
+
+    let total = scripts.reduce((n, {count}) => n + count, 0);
+    console.log(total);
+
+    return scripts.map(({name, count}) => {
+        return `${Math.round(count * 100 / total)}% ${name}`;
+    }).join(", ");
+}
+
+console.log(textScripts('"wooof", "тяв"'));
+
+// 120
