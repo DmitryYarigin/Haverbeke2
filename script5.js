@@ -112,7 +112,7 @@ function characterCount(script) { // выводит одним числом ди
     }, 0);
 }
 
-console.log(characterCount(SCRIPTS[0]));
+// console.log(characterCount(SCRIPTS[0]));
 
 
 // console.log(SCRIPTS.reduce((a, b) => { // находит самый большой шрифт
@@ -141,19 +141,19 @@ console.log(characterCount(SCRIPTS[0]));
 //     console.log(country, capital);
 // }
 
-function average(array) {
-    return array.reduce((a, b) => a + b) / array.length;
-}
+// function average(array) {
+//     return array.reduce((a, b) => a + b) / array.length;
+// }
 
-console.log(Math.round(average(
-    SCRIPTS.filter(s => s.living).map(s => s.year)
-)));
+// console.log(Math.round(average(
+//     SCRIPTS.filter(s => s.living).map(s => s.year)
+// )));
 
 // console.log(SCRIPTS.map(s => s.year));
 
-console.log(Math.round(average(
-    SCRIPTS.filter(s => !s.living).map(s => s.year)
-)));
+// console.log(Math.round(average(
+//     SCRIPTS.filter(s => !s.living).map(s => s.year)
+// )));
 
 // это вычисление можно представить в виде цикла
 
@@ -167,16 +167,16 @@ console.log(Math.round(average(
 
 // console.log(Math.round(total / count));
 
-function characterScript(code) {
-    for (const script of SCRIPTS) {
-        if (script.ranges.some(([from, to]) => {
-            return code >= from && code < to;
-        })) {
-            return script;
-        }
-    }
-    return null;
-}
+// function characterScript(code) { // определяет шрифт по номеру кода
+//     for (const script of SCRIPTS) {
+//         if (script.ranges.some(([from, to]) => {
+//             return code >= from && code < to;
+//         })) {
+//             return script;
+//         }
+//     }
+//     return null;
+// }
 
 // console.log(characterScript(121));
 
@@ -188,29 +188,40 @@ function characterScript(code) {
 
 // 119
 
-let roseDragon = "🌹🐉";
-console.log(roseDragon);
-for (const char of roseDragon) {
-    console.log(char);
-}
+// let roseDragon = "🌹🐉";
+// console.log(roseDragon);
+// for (const char of roseDragon) {
+//     console.log(char);
+// // }
 
-function countBy(items, groupName) {
-    let counts = [];
-    for (const item of items) {
-        let name = groupName(item);
-        console.log(name);
-        let known = counts.findIndex(c => c.name == name);
-        console.log(counts.findIndex(c => c.name == name));
-        if(known == -1) {
-            counts.push({name, count: 1})
-        } else {
-            counts[known].count++;
-        }
-    }
-    return counts;
-}
+// function countBy(items, groupName) { // функция принимает коллекцию типа массива
+//     let counts = [];                 // и функцию и возвращает массив объектов кот.
+//     for (const item of items) {  
+//         console.log(item);    // содержат имя группы и количество элементов
+//         let name = groupName(item);
+//         console.log(`переменная name ${name}`);           // ей соответствующих
+//         let known = counts.findIndex(c => c.name == name);
+//         console.log(`переменная known ${known}`);
+//         if(known == -1) {
+//             counts.push({name, count: 1})
+//             console.log(counts);
+//         } else {
+//             // console.log(counts[known].count);
+//             counts[known].count++;
+//             console.log(counts[known]);
+//         }
+//         console.log("круг прошел");
+//     }
+//     return counts;
+// }
 
-console.log(countBy([1, 2, 3], n => n > 2));
+// console.log(countBy([1, 2, 3, 4, 5], n => n > 2));
+
+
+// let myfindIndex = [{name: true, count:2},{name: false, count:3}].findIndex(c => c.name == name);
+
+// console.log(myfindIndex);
+
 
 // 
 
@@ -222,21 +233,57 @@ console.log(countBy([1, 2, 3], n => n > 2));
 
 // console.log(users.findIndex(item => item.id == 3));
 
-function textScripts(text) {
-    let scripts = countBy(text, char => {
-        let script = characterScript(char.codePointAt(0));
-        return script ? script.name : "none";
-    }).filter(({name}) => name != "none");
-    console.log(scripts);
+// function textScripts(text) { // функция показывает какие шрифты и их процент в тексте задействованы
+//     let scripts = countBy(text, char => {
+//         let script = characterScript(char.codePointAt(0));
+//         console.log(script);
+//         return script ? script.name : "none";
+//     }).filter(({name}) => name != "none"); // тут метод filter кот. отфильтровывает
+//     console.log(scripts);
 
-    let total = scripts.reduce((n, {count}) => n + count, 0);
-    console.log(total);
+//     let total = scripts.reduce((n, {count}) => n + count, 0); // reduce который сокращает приводя к одному фначению
+//     console.log(total);
 
-    return scripts.map(({name, count}) => {
-        return `${Math.round(count * 100 / total)}% ${name}`;
-    }).join(", ");
-}
+//     console.log(scripts);
+    
+//     return scripts.map(({name, count}) => { // map преобразовывает каждый элемент массива
+//         return `${Math.round(count * 100 / total)}% ${name}`;
+//     }).join(", ");
+// }
 
-console.log(textScripts('"wooof", "тяв"'));
+// console.log(textScripts('"wooof", "тяв"'));
 
 // 120
+
+// упражнения
+
+// 1)
+
+// нужно перевести массивы в массиве в один массив
+let myArray = [[1, 2],[3, 4],[5,6]];
+
+// вариант автора 
+
+let myArr33 = [];
+
+console.log(myArray.reduce((el, current) => 
+    el.concat(current), []
+    ));
+
+console.log(myArray);
+
+// // нагуглил вариант
+// let newArr3 = [];
+
+// myArray.forEach(el => { 
+//     newArr3 = newArr3.concat(el);
+//     console.log(newArr3);
+// })
+
+// console.log(newArr3);
+
+// let myArray46 = myArray.concat(newArr3);
+
+// console.log(myArray46);
+
+// 121
