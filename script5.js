@@ -257,20 +257,17 @@ function characterCount(script) { // выводит одним числом ди
 
 // упражнения
 
-// 1)
+// ============ 1)
 
 // нужно перевести массивы в массиве в один массив
 let myArray = [[1, 2],[3, 4],[5,6]];
 
 // вариант автора 
 
-let myArr33 = [];
+let newMyArray = myArray.reduce((elem, current) => elem.concat(current), [])
 
-console.log(myArray.reduce((el, current) => 
-    el.concat(current), []
-    ));
 
-console.log(myArray);
+console.log(newMyArray);
 
 // // нагуглил вариант
 // let newArr3 = [];
@@ -286,4 +283,32 @@ console.log(myArray);
 
 // console.log(myArray46);
 
-// 121
+// ========= 2)
+// написать функцию высшего порядка кот. принимает (значение, функцию условия,
+//  функцию обнавления, функцию тела)
+
+// это я пытался 
+
+// function loop (value, funIf) {  //funUpdate, funBody
+//     function funIf (val) {
+//         let count = 0;
+//         if (val == 10) {
+//             value ++
+//             count ++;
+//         }
+//     }       
+//     return value
+// }
+
+// console.log(loop(3, 10));
+
+// вот автор
+
+function loop(start, test, update, body) {
+    for (let value = start; test(value); value = update(value)) {
+        body(value);
+    }
+}
+
+loop(3, n => n > 0, n => n - 1, console.log);
+
